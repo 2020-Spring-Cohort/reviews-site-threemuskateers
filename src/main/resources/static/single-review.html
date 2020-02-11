@@ -1,17 +1,21 @@
 <!DOCTYPE html>
-<html lang: "en">
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title> Testing</title>
+    <meta name=-"viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
+    <title> Category: Comedy</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/layout.css">
 </head>
 
 <body>
-
     <header>
-        <img src="http://placekitten.com/1000/350" alt="header">
+        <img src="img/header.png" alt="header" class="header-image">
         <nav>
             <ul>
+                <a href="index.html">
+                    <li>Home</li>
+                </a>
                 <li>All Reviews</li>
                 <li>All Hashtags</li>
                 <li>Create Review</li>
@@ -19,7 +23,7 @@
                 <li>Search (maybe add this, maybe not)</li>
             </ul>
         </nav>
-
+        <h1 class="header-title"> Movie Name | Review Title</h1>
     </header>
 
     <div class="movie-review-title">
@@ -27,29 +31,38 @@
         <h2>A Decent Movie, but Terrible Movie and Morals</h2>
     </div>
 
-    <div class="movie-review-body">
-        <h3> Tammy Raddbody</h3>
-        <h4>9:35pm on January 1, 2019</h4>
-        <p>
-            "This movie was an absolute disgrace. I showed it to
-            my children and have never regretted anything more.
-            The obscenities
-            used in this movie were horrific. I will never again
-            let my family watch this movie in my Christian home."
-        </p>
-        <div class="hashtags">
-            #funny #hilarious #cold #winter
+    <section class="review-detail">
+        <div class="review-detail1">
+
+
+            <h3> Tammy Raddbody</h3>
+            <h4>9:35pm on January 1, 2019</h4>
+            <p>
+                "This movie was an absolute disgrace. I showed it to
+                my children and have never regretted anything more.
+                The obscenities
+                used in this movie were horrific. I will never again
+                let my family watch this movie in my Christian home."
+            </p>
+            <div class="hashtags">
+                #funny #hilarious #cold #winter
+            </div>
+
         </div>
 
-        <div class="movie-info">
-            <img src="" alt="movie picture">
+        <div class="review-detail2">
+
+            <img src="img/documentary.png" class="review-detail-picture" alt="movie picture">
             <h3> Movie Title</h3>
+            <div class="movie-num-stars">
+              Actual Stars Here
+            </div>
+            <div class="movie-review-info">
+                4.5 out of 5 Stars
+            </div>
         </div>
-        <div class="movie-review-info">
-            4.5 out of 5 Stars
 
-        </div>
-    </div>
+    </section>
 </body>
 
 </html>

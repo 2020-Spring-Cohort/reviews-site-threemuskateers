@@ -1,0 +1,100 @@
+:root {
+    --bg1: #091942;
+    --bg2: #197278;
+    --bg3: #edddd4;
+    --bg4: #c44536;
+    --bg5: #772e25;
+}
+
+body {
+    font-family: sans-serif;
+    background-color: black;
+}
+
+.bg1 {
+    background-color: #091942;
+}
+
+.bg2 {
+    background-color: #197278;
+}
+
+.bg3 {
+    background-color: #edddd4;
+}
+
+.bg4 {
+    background-color: #c44536;
+}
+
+.bg5 {
+    background-color: #772e25;
+}
+
+nav {
+    background-color: var(--bg5);
+    color: white;
+    font-size: 1.6em;
+}
+
+a {
+    color: white;
+    /* text-decoration: none; */
+}
+
+a:visited {
+    color: white;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+h1 {
+    color: var(--bg2);
+    z-index: 2;
+    font-size: 5em;
+    text-align: center;
+    align-self: flex-end;
+    margin: 0;
+}
+
+header {
+    background-color: rgba(0, 0, 0);
+    min-height: 350px;
+}
+
+article {
+    background-color: var(--bg1);
+    color: white;
+}
+
+.category-title {
+    padding-top: 25px;
+    margin: 0;
+    min-height: 55px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.listed-reviews {
+    color: white;
+}
+
+.list-title {
+    padding-left: 120px;
+    padding-right: 120px;
+    background-color: var(--bg4);
+}
+
+.single-review {
+    padding-left: 120px;
+    padding-right: 120px;
+}
+
+.review-detail {
+    color: black;
+    background-color: var(--bg3);
+    padding: 50px;
+}
