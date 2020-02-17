@@ -22,7 +22,7 @@ public class HttpRequestTest {
     @Test
     public void reviewsIndexPagePointReturnsOk(){
         ResponseEntity<String> response = testRestTemplate.getForEntity(
-                "http://localhost:" + port + "/categories", String.class);
+                "http://localhost:" + port + "/index.html", String.class);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 
     }
