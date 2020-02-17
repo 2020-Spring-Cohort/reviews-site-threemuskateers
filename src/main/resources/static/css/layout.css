@@ -20,6 +20,7 @@ header {
 .header-image {
     grid-row: 1;
     grid-column: 1;
+    max-width: 100%;
 }
 
 .header-title {
@@ -32,9 +33,6 @@ nav ul {
     justify-content: space-around;
 }
 
-nav li:first-child {
-    color: blue;
-}
 
 .single-review {
     display: grid;
@@ -65,10 +63,9 @@ nav li:first-child {
     width: 80%;
     margin-left: auto;
     margin-right: auto;
-
 }
 
-.review-detail-picture{
+.review-detail-picture {
     margin-left: auto;
     margin-right: auto;
 }
@@ -88,4 +85,14 @@ nav li:first-child {
     grid-template-rows: 150fr 40fr 40fr 20fr;
     grid-template-columns: 1fr;
     text-align: center;
+}
+
+.hashtag-index {
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
 }

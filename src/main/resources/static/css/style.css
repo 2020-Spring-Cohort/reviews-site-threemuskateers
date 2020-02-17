@@ -1,14 +1,19 @@
 :root {
     --bg1: #091942;
-    --bg2: #197278;
-    --bg3: #edddd4;
-    --bg4: #c44536;
-    --bg5: #772e25;
+    --bg2: #2e2e2e;
+    --bg3: #7cffcb;
+    --bg4: #9ed3c8;
+    --bg5: #f16320;
+    --bg6: #f8f2da;
 }
 
 body {
     font-family: sans-serif;
-    background-color: black;
+    background-image: url('../img/popcorn.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 2500px;
 }
 
 .bg1 {
@@ -35,6 +40,14 @@ nav {
     background-color: var(--bg5);
     color: white;
     font-size: 1.6em;
+}
+
+nav:link {
+    color: white;
+}
+
+nav a {
+    color: white;
 }
 
 a {
@@ -65,7 +78,7 @@ header {
 }
 
 article {
-    background-color: var(--bg1);
+    background-color: rgba(0, 0, 50, 0.6);
     color: white;
 }
 
@@ -80,6 +93,7 @@ article {
 
 .listed-reviews {
     color: white;
+    background-color: rgba(0, 0, 20, 0.9);
 }
 
 .list-title {
@@ -91,10 +105,50 @@ article {
 .single-review {
     padding-left: 120px;
     padding-right: 120px;
+    border-bottom: 1px solid white;
+    display: flex;
+    align-items: center;
+}
+
+.single-review:first-child {
+    margin-top: 50px;
+}
+
+.movie-review-title {
+    color: white;
+    margin-left: 200px;
+}
+
+.movie-review-title h2:first-child {
+    font-size: 5em;
+    display: inline;
+}
+
+.movie-review-title h2:last-child {
+    display: inline;
+    margin-left: 50px;
 }
 
 .review-detail {
     color: black;
-    background-color: var(--bg3);
+    background-color: var(--bg6);
     padding: 50px;
+}
+
+.hashtag-index {
+    color: white;
+    font-size: 1.8em;
+}
+
+.hashtag-index p {
+    padding: 20px;
+    margin: 10px;
+    background-color: var(--bg4);
+}
+/* 
+these are for the hashtags at the bottom
+of single reviews */
+.hashtags{
+    font-size: 1em;
+
 }
