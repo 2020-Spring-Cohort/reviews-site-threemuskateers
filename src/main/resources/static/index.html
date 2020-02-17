@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang= "en" xmlns:th="http://www.thymeleaf.org">
+<html lang= "en" xmlns:th="http://www.thymeleaf.org"
+        xmlns="http://www.w3.org/1999/xhtml" >
 
 <head>
     <meta name=-"viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
@@ -19,14 +20,14 @@
                 <a href="create.html"><li>Create Review</li></a>
             </ul>
         </nav>
-        <h1 class="header-title"> All Categories</h1>
+        <h1   class="header-title"> All Categories</h1>
     </header>
    
 
 
 <section class="all-boxes">
     <article >
-        <h2 class="category-title"> Drama</h2>
+        <h2 th:each="category:${categories}" class="category-title" ><a th:text="${category.genre}" th:href="@{'/categories/'+ ${category.genre}}"> Drama</a></h2>
         <img src="img/drama.png" alt="drama" class="category-picture">
     </article>
 
