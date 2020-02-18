@@ -32,5 +32,4 @@ public class WebLayerTest {
                 .andExpect(view().name("index"))
                 .andExpect(model().attributeExists("categories"));
     }
-
 }
