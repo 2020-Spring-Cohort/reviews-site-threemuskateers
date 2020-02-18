@@ -28,7 +28,7 @@
 <section class="all-boxes">
     <article th:each="category:${categories}"  >
         <h2 class="category-title" ><a th:text="${category.genre}" th:href="@{'/categories/'+ ${category.genre}}"> Drama</a></h2>
-        <img th:src="@{'img/' + ${category.genre} + '.png'}" th:alt="${category.genre}" class="category-picture">
+        <img th:src="@{'img/' + ${category.imgUrl} + '.png'}" th:alt="${category.imgUrl}" class="category-picture">
     </article>
 
 <!--    <article>-->

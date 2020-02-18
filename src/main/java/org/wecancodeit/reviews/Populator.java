@@ -15,14 +15,14 @@ public class Populator implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Category drama = new Category("Drama");
+        Category drama = new Category("Drama", "drama");
         categoryStorage.store(drama);
-        Category actionadventure = new Category("Action / Adventure");
+        Category actionadventure = new Category("Action / Adventure", "action");
         categoryStorage.store(actionadventure);
-        Category comedy = new Category("Comedy");
+        Category comedy = new Category("Comedy", "comedy");
         categoryStorage.store(comedy);
-        Category romance = new Category("Romance");
-        categoryStorage.store(romance);
+        Category thriller = new Category("Thriller", "thriller");
+        categoryStorage.store(thriller);
 
     }
 }

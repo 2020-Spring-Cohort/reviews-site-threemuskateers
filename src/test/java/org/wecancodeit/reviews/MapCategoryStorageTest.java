@@ -8,7 +8,7 @@ public class MapCategoryStorageTest {
 
     @Test
     public void shouldBeAbleToStoreCategoryInTheMap(){
-        Category testCategory = new Category("horror");
+        Category testCategory = new Category("horror", "test");
         CategoryStorage underTest = new MapCategoryStorage();
         underTest.store(testCategory);
         assertThat(underTest.findAllCategories()).contains(testCategory);
