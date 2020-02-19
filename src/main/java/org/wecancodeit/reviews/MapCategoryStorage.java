@@ -8,10 +8,11 @@ import java.util.HashMap;
 @Service
 public class MapCategoryStorage implements CategoryStorage {
 
+    private HashMap<String, Category> categories;
+
     public MapCategoryStorage(){
         categories = new HashMap<>();
     }
-    private HashMap<String, Category> categories;
 
 
     @Override

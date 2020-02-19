@@ -1,7 +1,17 @@
 package org.wecancodeit.reviews;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Category {
 
+    @Id
+    @GeneratedValue
+    private Long id;
+
+    public Category(){}
 
     public Category(String genre, String imgUrl) {
         this.genre = genre;
