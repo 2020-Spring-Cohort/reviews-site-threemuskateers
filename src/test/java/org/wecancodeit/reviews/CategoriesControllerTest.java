@@ -39,6 +39,7 @@ public class CategoriesControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk());
     }
+
     @Test
     public void shouldReturnViewWithOneGenre(){
         Category testCategory = new Category("Thriller", "testurl");
