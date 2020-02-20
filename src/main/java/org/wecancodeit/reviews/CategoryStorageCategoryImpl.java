@@ -26,6 +26,6 @@ public class CategoryStorageCategoryImpl implements CategoryStorage {
 
     @Override
     public Category findCategoryByGenre(String genre) {
-        return null;
+        return categoryRepository.findByGenre(genre).get();
     }
 }

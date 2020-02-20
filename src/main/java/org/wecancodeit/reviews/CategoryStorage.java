@@ -9,4 +9,5 @@ public interface CategoryStorage {
     void store(Category category);
 
     Category findCategoryByGenre(String genre);
+
 }
