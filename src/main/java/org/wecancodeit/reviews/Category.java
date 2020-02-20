@@ -42,4 +42,24 @@ public class Category {
                 ", genre='" + genre + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Category category = (Category) o;
+
+        if (id != null ? !id.equals(category.id) : category.id != null) return false;
+        if (genre != null ? !genre.equals(category.genre) : category.genre != null) return false;
+        return imgUrl != null ? imgUrl.equals(category.imgUrl) : category.imgUrl == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (genre != null ? genre.hashCode() : 0);
+        result = 31 * result + (imgUrl != null ? imgUrl.hashCode() : 0);
+        return result;
+    }
 }
