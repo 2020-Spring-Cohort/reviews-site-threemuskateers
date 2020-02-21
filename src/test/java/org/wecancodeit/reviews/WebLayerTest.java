@@ -24,6 +24,8 @@ public class WebLayerTest {
     @MockBean
     CategoryStorage mockCategoryStorage;
 
+    @MockBean
+    MovieStorage movieStorage;
     @Test
     public void cateogiresshouldBeOkAndReturnTheCategoriesViewWithAllAppropriateGenres() throws Exception {
         mockMvc.perform(get("/categories"))

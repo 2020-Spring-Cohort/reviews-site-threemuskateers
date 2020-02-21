@@ -1,5 +1,10 @@
 package org.wecancodeit.reviews;
 
+import org.springframework.stereotype.Service;
+
+import java.util.Optional;
+
+@Service
 public class MovieStorageJpaImpl implements MovieStorage {
 
 
@@ -11,11 +16,11 @@ public class MovieStorageJpaImpl implements MovieStorage {
 
     @Override
     public void store(Movie movieToStore) {
-
+        movieRepository.save(movieToStore);
     }
 
     @Override
-    public Movie findMovieById(Long id) {
-        return null;
+    public  Movie findMovieById(Long id) {
+        return movieRepository.findById(id).get();
     }
 }

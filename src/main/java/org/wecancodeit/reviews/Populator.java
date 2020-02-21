@@ -30,6 +30,8 @@ public class Populator implements CommandLineRunner {
 
         Movie irishmen = new Movie ("The Irishmen", drama);
         movieStorage.store(irishmen);
+        Movie outCold = new Movie ("Out Cold", comedy);
+        movieStorage.store(outCold);
 
 
     }

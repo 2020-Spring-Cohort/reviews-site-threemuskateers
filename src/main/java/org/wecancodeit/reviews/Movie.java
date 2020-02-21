@@ -15,7 +15,7 @@ public class Movie {
     public Long id;
 
     @ManyToOne
-    public Category genre;
+    private Category genre;
     public String title;
 
     public Movie(){}
@@ -50,14 +50,19 @@ public class Movie {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         Movie movie = (Movie) o;
-        return Objects.equals(title, movie.title) &&
-                Objects.equals(id, movie.id) &&
-                Objects.equals(genre, movie.genre);
+
+        if (!id.equals(movie.id)) return false;
+        if (genre != null ? !genre.equals(movie.genre) : movie.genre != null) return false;
+        return title != null ? title.equals(movie.title) : movie.title == null;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(title, id, genre);
+        int result = id.hashCode();
+        result = 31 * result + (genre != null ? genre.hashCode() : 0);
+        result = 31 * result + (title != null ? title.hashCode() : 0);
+        return result;
     }
 }

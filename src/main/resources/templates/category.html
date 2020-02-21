@@ -34,25 +34,13 @@
 
 
     <section class="all-boxes">
-        <article>
-            <h2 class="category-title"> Dumb And Dumber</h2>
+        <article th:each="movie:${categories.movies}"   >
+            <a th:href="@{'/movies/'+ ${movie.id}}" >
+            <h2 class="category-title" th:text="${movie.title}"> </h2>
+            </a>
         </article>
 
-        <article>
-            <h2 class="category-title"> Out Cold</h2>
-        </article>
 
-        <article>
-            <h2 class="category-title"> Hot Rod</h2>
-        </article>
-
-        <article>
-            <h2 class="category-title"> Step Brothers</h2>
-        </article>
-
-        <article>
-            <h2 class="category-title"> American Pie </h2>
-        </article>
     </section>
 </body>
 

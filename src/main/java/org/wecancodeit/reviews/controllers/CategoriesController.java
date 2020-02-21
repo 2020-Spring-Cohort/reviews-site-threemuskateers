@@ -25,6 +25,6 @@ public class CategoriesController {
     public String displaySingleCategory(@PathVariable String genre, Model model) {
         Category retrieveCategory = categoryStorage.findCategoryByGenre(genre);
         model.addAttribute("categories", retrieveCategory);
-        return "category_comedy";
+        return "category";
     }
 }
