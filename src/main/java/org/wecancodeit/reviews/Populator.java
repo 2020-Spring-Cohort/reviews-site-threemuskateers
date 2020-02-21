@@ -6,11 +6,15 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Populator implements CommandLineRunner {
-    @Autowired
-    CategoryStorage categoryStorage;
 
-    public Populator(CategoryStorage categoryStorage){
+    private CategoryStorage categoryStorage;
+    private MovieStorage movieStorage;
+
+
+
+    public Populator(CategoryStorage categoryStorage, MovieStorage movieStorage){
         this.categoryStorage = categoryStorage;
+        this.movieStorage = movieStorage;
     }
 
     @Override
@@ -23,6 +27,10 @@ public class Populator implements CommandLineRunner {
         categoryStorage.store(comedy);
         Category thriller = new Category("Thriller", "thriller");
         categoryStorage.store(thriller);
+
+        Movie irishmen = new Movie ("The Irishmen", drama);
+        movieStorage.store(irishmen);
+
 
     }
 }

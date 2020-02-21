@@ -10,8 +10,6 @@ import java.util.Objects;
 @Entity
 public class Movie {
 
-
-
     @Id
     @GeneratedValue
     public Long id;

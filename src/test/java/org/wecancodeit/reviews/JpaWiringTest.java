@@ -15,7 +15,7 @@ public class JpaWiringTest {
     @Autowired
     private CategoryRepository categoryRepo;
     @Autowired
-    private movieRepository movieRepo;
+    private MovieRepository movieRepo;
     @Autowired
     private TestEntityManager entityManager;
 
