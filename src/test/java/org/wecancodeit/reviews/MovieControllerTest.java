@@ -59,7 +59,7 @@ public class MovieControllerTest {
         when(movieStorage.findMovieById(1L)).thenReturn(testMovie);
         MockMvc mockMVC = MockMvcBuilders.standaloneSetup(underTest).build();
 
-        mockMVC.perform(MockMvcRequestBuilders.get("/categories/1"))
+        mockMVC.perform(MockMvcRequestBuilders.get("/movies/1"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("single_movie"))
                 .andExpect(model().attributeExists("movie"))

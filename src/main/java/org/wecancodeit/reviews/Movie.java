@@ -1,15 +1,14 @@
 package org.wecancodeit.reviews;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.util.Collection;
 import java.util.Objects;
 
 
 @Entity
 public class Movie {
-
+    @OneToMany (mappedBy = "movie")
+public Collection<Review> reviews;
     @Id
     @GeneratedValue
     public Long id;

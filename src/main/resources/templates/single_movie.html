@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang= "en" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml" >
 
 <head>
     <meta name=-"viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
-    <title> Reviews With #Comedy</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/layout.css">
+    <title th:text="'reviews for '+ ${movie.title}" >
+    </title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/layout.css">
 </head>
 
 <body>
     <header>
-        <img src="img/header.png" alt="header" class="header-image">
+        <img src="../../img/header.png" alt="header" class="header-image">
         <nav>
             <ul>
                 <a href="index.html">
@@ -27,7 +29,7 @@
                 </a>
             </ul>
         </nav>
-        <h1 class="header-title"> All Reviews with #comedy</h1>
+        <h1 class="header-title"th:text="'All Reviews for: '+ ${movie.title}" > </h1>
     </header>
     <section class="listed-reviews">
 
