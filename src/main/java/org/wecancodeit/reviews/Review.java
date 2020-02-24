@@ -7,6 +7,7 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Review {
+    public Review(){}
     @ManyToOne
     private Movie movie;
     private String author;
