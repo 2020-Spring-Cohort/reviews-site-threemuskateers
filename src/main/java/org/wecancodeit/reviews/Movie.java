@@ -7,14 +7,17 @@ import java.util.Objects;
 
 @Entity
 public class Movie {
+
     @OneToMany (mappedBy = "movie")
-public Collection<Review> reviews;
+    public Collection<Review> reviews;
+
     @Id
     @GeneratedValue
     public Long id;
 
     @ManyToOne
     private Category genre;
+
     public String title;
 
     public Movie(){}

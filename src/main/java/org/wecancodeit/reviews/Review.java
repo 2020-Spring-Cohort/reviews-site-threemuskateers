@@ -10,6 +10,18 @@ public class Review {
 
     public Review(){}
 
+    public Movie getMovie() {
+        return movie;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public Long getReviewId() {
+        return reviewId;
+    }
+
     @ManyToOne
     private Movie movie;
 
@@ -31,15 +43,13 @@ public class Review {
 
         Review review = (Review) o;
 
-        if (movie != null ? !movie.equals(review.movie) : review.movie != null) return false;
         if (author != null ? !author.equals(review.author) : review.author != null) return false;
         return reviewId != null ? reviewId.equals(review.reviewId) : review.reviewId == null;
     }
 
     @Override
     public int hashCode() {
-        int result = movie != null ? movie.hashCode() : 0;
-        result = 31 * result + (author != null ? author.hashCode() : 0);
+        int result = author != null ? author.hashCode() : 0;
         result = 31 * result + (reviewId != null ? reviewId.hashCode() : 0);
         return result;
     }

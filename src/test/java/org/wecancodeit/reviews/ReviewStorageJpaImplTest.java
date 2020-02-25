@@ -14,33 +14,39 @@ public class ReviewStorageJpaImplTest {
     private Review testReview;
     private Movie testMovie;
     private Category testCategory;
+    private ReviewStorageJpaImpl testRepo;
 
 
     @Test
-        public void shouldFindRevieByMovie(){
+        public void shouldFindAllReviews(){
             underTest = mock(ReviewRepository.class);
-            ReviewStorageJpaImpl testRepo = new ReviewStorageJpaImpl(underTest);
+            testRepo = new ReviewStorageJpaImpl(underTest);
             testCategory = new Category("Comedy", "comedyPic");
             testMovie = new Movie("Out Cold", testCategory);
-            testReview = new Review( testMovie, "Nadir");
+            testReview = new Review(testMovie, "Nadir");
 
 
-            when(testRepo.findReviewsForMovie("Out Cold")).thenReturn(Collections.singletonList(testReview));
+            when(testRepo.findAllReviews()).thenReturn(Collections.singletonList(testReview));
             testRepo.store(testReview);
             verify(underTest).save(testReview);
             assertThat(testRepo.findAllReviews()).contains(testReview);
 
-
         }
 
-//        @Test
-//        public void shouldStoreMovie(){
-//            underTest = mock(MovieRepository.class);
-//            underTest = new MovieStorageJpaImpl(underTest);
-//            Category testCategory = new Category("Comedy", "comedyPic");
-//            testReview = new Movie("Out Cold", testCategory);
-//
-//            underTest.store(testReview);
-//            verify(underTest).save(testReview);
-//    }
+    @Test
+    public void shouldFindReviewsForMovie(){
+        underTest = mock(ReviewRepository.class);
+        testRepo = new ReviewStorageJpaImpl(underTest);
+        testCategory = new Category("Comedy", "comedyPic");
+        testMovie = new Movie("Out Cold", testCategory);
+        testReview = new Review(testMovie, "Nadir");
+
+        testRepo.store(testReview);
+        when(testRepo.findAllReviewsByMovie(testMovie)).thenReturn(Collections.singletonList(testReview));
+
+        verify(underTest).save(testReview);
+        assertThat(testRepo.findAllReviewsByMovie(testMovie)).contains(testReview);
+
+
+    }
 }

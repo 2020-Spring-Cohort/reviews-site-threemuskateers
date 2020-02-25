@@ -8,6 +8,8 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.Model;
 import org.wecancodeit.reviews.controllers.ReviewController;
 
+import java.util.Optional;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -32,25 +34,23 @@ public class ReviewControllerTest {
         Category fakeCategory = new Category("Fake Category", "image");
         testMovie = new Movie("Out Cold", fakeCategory);
         reviewUndertest = new Review(testMovie, "Nadir");
-
-
     }
     @Test
     public void shouldFindReviewsEndpoint() {
         String result = underTest.displayReview(1L, mockModel);
-        when(mockStorage.findReviewById(1L)).thenReturn(reviewUndertest);
+        when(mockStorage.findById(1L)).thenReturn(Optional.of(reviewUndertest));
         assertThat(result).isEqualTo("single_review");
     }
     @Test
     public void shouldBeAbletoRetrieveSingleReview(){
-        when(mockStorage.findReviewById(1L)).thenReturn(reviewUndertest);
+        when(mockStorage.findById(1L)).thenReturn(Optional.of(reviewUndertest));
         underTest.displayReview(1L, mockModel);
-        verify(mockStorage).findReviewById(1L);
+        verify(mockStorage).findById(1L);
         verify(mockModel).addAttribute("review", reviewUndertest);
     }
     @Test
     public void displayReviewMappingIsCorrect()throws Exception{
-        when(mockStorage.findReviewById(1L)).thenReturn(reviewUndertest);
+        when(mockStorage.findById(1L)).thenReturn(Optional.of(reviewUndertest));
         mockMvc.perform(MockMvcRequestBuilders.get("/movies/1"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("single_review"))

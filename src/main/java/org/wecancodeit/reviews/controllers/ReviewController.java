@@ -16,8 +16,13 @@ public class ReviewController {
     }
     @RequestMapping("/movies/{reviewId}")
     public String displayReview(@PathVariable Long reviewId, Model model) {
-        Review retrievedReview = reviewRepository.findReviewById(reviewId);
+        Review retrievedReview = reviewRepository.findById(reviewId).get();
         model.addAttribute("review", retrievedReview);
         return "single_review";
     }
+
+//    @RequestMapping("/movies/{reviewId}")
+//    public String displayAllReviewsForMovie() {
+//
+//    }
 }
