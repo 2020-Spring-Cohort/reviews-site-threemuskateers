@@ -7,6 +7,10 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.Model;
 import org.wecancodeit.reviews.controllers.ReviewController;
+import org.wecancodeit.reviews.models.Category;
+import org.wecancodeit.reviews.models.Movie;
+import org.wecancodeit.reviews.models.Review;
+import org.wecancodeit.reviews.storage.repositories.ReviewRepository;
 
 import java.util.Optional;
 
@@ -33,12 +37,12 @@ public class ReviewControllerTest {
         mockMvc = MockMvcBuilders.standaloneSetup(underTest).build();
         Category fakeCategory = new Category("Fake Category", "image");
         testMovie = new Movie("Out Cold", fakeCategory);
-        reviewUndertest = new Review(testMovie, "Nadir");
+        reviewUndertest = new Review(testMovie, "Nadir", 5, "it was ok from nadir");
     }
     @Test
     public void shouldFindReviewsEndpoint() {
-        String result = underTest.displayReview(1L, mockModel);
         when(mockStorage.findById(1L)).thenReturn(Optional.of(reviewUndertest));
+        String result = underTest.displayReview(1L, mockModel);
         assertThat(result).isEqualTo("single_review");
     }
     @Test
@@ -51,7 +55,7 @@ public class ReviewControllerTest {
     @Test
     public void displayReviewMappingIsCorrect()throws Exception{
         when(mockStorage.findById(1L)).thenReturn(Optional.of(reviewUndertest));
-        mockMvc.perform(MockMvcRequestBuilders.get("/movies/1"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/reviews/1"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("single_review"))
                 .andExpect(model().attributeExists("review"))

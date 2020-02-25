@@ -1,9 +1,8 @@
-package org.wecancodeit.reviews;
+package org.wecancodeit.reviews.storage;
 
 import org.springframework.stereotype.Service;
-
-import java.util.Collection;
-import java.util.Optional;
+import org.wecancodeit.reviews.models.Movie;
+import org.wecancodeit.reviews.storage.repositories.MovieRepository;
 
 @Service
 public class MovieStorageJpaImpl implements MovieStorage {
@@ -23,6 +22,11 @@ public class MovieStorageJpaImpl implements MovieStorage {
     @Override
     public  Movie findMovieById(Long id) {
         return movieRepository.findById(id).get();
+    }
+
+    @Override
+    public Movie findMovieByTitle(String title) {
+        return movieRepository.findMovieByTitle(title);
     }
 
 

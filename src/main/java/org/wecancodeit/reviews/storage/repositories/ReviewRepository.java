@@ -1,10 +1,10 @@
-package org.wecancodeit.reviews;
+package org.wecancodeit.reviews.storage.repositories;
 
 import org.springframework.data.repository.CrudRepository;
+import org.wecancodeit.reviews.models.Movie;
+import org.wecancodeit.reviews.models.Review;
 
 import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
 
 public interface ReviewRepository extends CrudRepository<Review, Long> {
 

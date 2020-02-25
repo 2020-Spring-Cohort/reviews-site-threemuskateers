@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang= "en" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml" >
 <head>
     <meta name=-"viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
     <title> Reviews With #Comedy</title>
@@ -13,21 +13,13 @@
         <img src="img/header.png" alt="header" class="header-image">
         <nav>
             <ul>
-                <a href="index.html">
-                    <li>Home</li>
-                </a>
-                <a href="reviews.html">
-                    <li>All Reviews</li>
-                </a>
-                <a href="hashtags.html">
-                    <li>All Hashtags</li>
-                </a>
-                <a href="create.html">
-                    <li>Create Review</li>
-                </a>
+                <a href="categories"> <li>Home</li></a>
+                <a href="/reviews"><li>All Reviews</li></a>
+                <a href="/hashtags"><li>All Hashtags</li></a>
+
             </ul>
         </nav>
-        <h1 class="header-title"> All Reviews with #comedy</h1>
+        <h1 class="header-title"> All Reviews </h1>
     </header>
     <section class="listed-reviews">
 
@@ -39,108 +31,38 @@
                 <h2>Movie Rating</h2>
             </div>
             <div class="review-date-time">
-                <h2>Date Reviewed</h2>
+                <h2>Author</h2>
             </div>
             <div class="review-summary">
                 <h2>Review Description</h2>
             </div>
         </div>
 
-        <div class="single-review">
+        <div th:each="review:${reviews}"   class="single-review">
             <div class="review-title">
-                <p>Step Brothers</p>
+                <p th:text="${review.getMovieTitleFromReview()}"></p>
             </div>
             <div class="review-num-stars">
-                <p>4.5 Out Of 5 </p>
+                <p th:text="${review.getRating()} + ' out of 5'" > </p>
             </div>
             <div class="review-date-time">
-                <p> February 3, 2020</p>
+                <p th:text="${review.getAuthor()}"> </p>
             </div>
             <div class="review-summary">
-                <p> initial impressions: Light weight, doesn't feel bulky or
-                    huge on the wrist. I can hardly notice it's there at times
-                    when I’m wearing it....
+                <p th:text="${review.getComments()}">
                 </p>
             </div>
         </div>
 
-        <div class="single-review">
-            <div class="review-title">
-                <p>Dumb & Dumber</p>
-            </div>
-            <div class="review-num-stars">
-                <p>4.5 Out Of 5 </p>
-            </div>
-            <div class="review-date-time">
-                <p> February 3, 2020</p>
-            </div>
-            <div class="review-description-summary">
-                <p> initial impressions: Light weight, doesn't feel bulky or
-                    huge on the wrist. I can hardly notice it's there at times
-                    when I’m wearing it....
-                </p>
-            </div>
-        </div>
 
-        <div class="single-review">
-            <div class="review-title">
-                <a href="single_review2.html">
-                    <p>Hot Rod</p>
-                </a>
-            </div>
-            <div class="review-num-stars">
-                <p>5 Out Of 5 </p>
-            </div>
-            <div class="review-date-time">
-                <p> February 3, 2020</p>
-            </div>
-            <div class="review-description-summary">
-                <p> initial impressions: Light weight, doesn't feel bulky or
-                    huge on the wrist. I can hardly notice it's there at times
-                    when I’m wearing it....
-                </p>
-            </div>
-        </div>
+
+
 
       
-        <div class="single-review">
-     
-            <div class="review-title">
-                    <a href="../templates/single_review.html"> <p>Out Cold</p></a>
-            </div>
-            <div class="review-num-stars">
-                <p>4 Out Of 5 </p>
-            </div>
-            <div class="review-date-time">
-                <p> February 3, 2020</p>
-            </div>
-            <div class="review-description-summary">
-                <p> initial impressions: Light weight, doesn't feel bulky or
-                    huge on the wrist. I can hardly notice it's there at times
-                    when I’m wearing it....
-                </p>
-            </div>
-      
-        </div>
+
       
 
-        <div class="single-review">
-            <div class="review-title">
-                <p>Chairman of the Board</p>
-            </div>
-            <div class="review-num-stars">
-                <p>0.5 Out Of 5 </p>
-            </div>
-            <div class="review-date-time">
-                <p> February 3, 2020</p>
-            </div>
-            <div class="review-description-summary">
-                <p> initial impressions: Light weight, doesn't feel bulky or
-                    huge on the wrist. I can hardly notice it's there at times
-                    when I’m wearing it....
-                </p>
-            </div>
-        </div>
+
     </section>
 </body>
 

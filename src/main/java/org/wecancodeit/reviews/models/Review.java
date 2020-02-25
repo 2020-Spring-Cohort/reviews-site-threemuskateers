@@ -1,4 +1,4 @@
-package org.wecancodeit.reviews;
+package org.wecancodeit.reviews.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,7 +8,9 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Review {
 
+
     public Review(){}
+
 
     public Movie getMovie() {
         return movie;
@@ -22,18 +24,28 @@ public class Review {
         return reviewId;
     }
 
+    public String getMovieTitleFromReview(){
+        return movie.getTitle();
+    }
+
     @ManyToOne
     private Movie movie;
 
     private String author;
 
+    private int rating;
+
+    private String comments;
+
     @Id
     @GeneratedValue
     private Long reviewId;
 
-    public Review(Movie movie, String author) {
+    public Review(Movie movie, String author, int rating, String comments) {
         this.author = author;
         this.movie = movie;
+        this.rating = rating;
+        this.comments = comments;
     }
 
     @Override
@@ -52,5 +64,13 @@ public class Review {
         int result = author != null ? author.hashCode() : 0;
         result = 31 * result + (reviewId != null ? reviewId.hashCode() : 0);
         return result;
+    }
+
+    public String getComments() {
+        return comments;
+    }
+
+    public int getRating() {
+        return rating;
     }
 }

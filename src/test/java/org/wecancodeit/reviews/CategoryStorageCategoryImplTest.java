@@ -1,6 +1,10 @@
 package org.wecancodeit.reviews;
 
 import org.junit.jupiter.api.Test;
+import org.wecancodeit.reviews.models.Category;
+import org.wecancodeit.reviews.storage.repositories.CategoryRepository;
+import org.wecancodeit.reviews.storage.CategoryStorage;
+import org.wecancodeit.reviews.storage.CategoryStorageCategoryImpl;
 
 import java.util.Collections;
 import java.util.Optional;

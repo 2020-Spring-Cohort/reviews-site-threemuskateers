@@ -6,6 +6,9 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.Model;
 import org.wecancodeit.reviews.controllers.MovieController;
+import org.wecancodeit.reviews.models.Category;
+import org.wecancodeit.reviews.models.Movie;
+import org.wecancodeit.reviews.storage.MovieStorage;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
@@ -18,6 +21,7 @@ public class MovieControllerTest {
     private Movie testMovie;
     private Category testCategory;
 
+
     @Test
     public void shouldBeAbleToDisplayEndPointMovie() {
         Category testCategory = new Category("Comedy", "comedyImage");
@@ -26,7 +30,7 @@ public class MovieControllerTest {
         model = mock(Model.class);
         underTest = new MovieController(movieStorage);
 
-        String result = underTest.displayMovie(1L, model);
+        String result = underTest.displayMovie("Out Cold", model);
         when(movieStorage.findMovieById(1L)).thenReturn(testMovie);
         assertThat(result).isEqualTo("single_movie");
 
@@ -40,10 +44,10 @@ public class MovieControllerTest {
         model = mock(Model.class);
         underTest = new MovieController(movieStorage);
 
-        when(movieStorage.findMovieById(1L)).thenReturn(testMovie);
-        underTest.displayMovie(1L, model);
+        when(movieStorage.findMovieByTitle("Out Cold")).thenReturn(testMovie);
+        underTest.displayMovie("Out Cold", model);
 
-        verify(movieStorage).findMovieById(1L);
+        verify(movieStorage).findMovieByTitle("Out Cold");
         verify(model).addAttribute("movie", testMovie);
 
     }
@@ -56,10 +60,10 @@ public class MovieControllerTest {
         model = mock(Model.class);
         underTest = new MovieController(movieStorage);
 
-        when(movieStorage.findMovieById(1L)).thenReturn(testMovie);
+        when(movieStorage.findMovieByTitle("Out Cold")).thenReturn(testMovie);
         MockMvc mockMVC = MockMvcBuilders.standaloneSetup(underTest).build();
 
-        mockMVC.perform(MockMvcRequestBuilders.get("/movies/1"))
+        mockMVC.perform(MockMvcRequestBuilders.get("/movies/Out Cold"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("single_movie"))
                 .andExpect(model().attributeExists("movie"))

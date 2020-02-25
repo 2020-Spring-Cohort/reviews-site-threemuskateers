@@ -1,6 +1,11 @@
 package org.wecancodeit.reviews;
 
 import org.junit.jupiter.api.Test;
+import org.wecancodeit.reviews.models.Category;
+import org.wecancodeit.reviews.models.Movie;
+import org.wecancodeit.reviews.storage.repositories.MovieRepository;
+import org.wecancodeit.reviews.storage.MovieStorage;
+import org.wecancodeit.reviews.storage.MovieStorageJpaImpl;
 
 import java.util.Optional;
 

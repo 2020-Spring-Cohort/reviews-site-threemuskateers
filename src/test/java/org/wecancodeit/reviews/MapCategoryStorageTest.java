@@ -1,6 +1,9 @@
 package org.wecancodeit.reviews;
 
 import org.junit.jupiter.api.Test;
+import org.wecancodeit.reviews.models.Category;
+import org.wecancodeit.reviews.storage.CategoryStorage;
+import org.wecancodeit.reviews.storage.MapCategoryStorage;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

@@ -1,12 +1,15 @@
-package org.wecancodeit.reviews;
+package org.wecancodeit.reviews.models;
 
 import javax.persistence.*;
 import java.util.Collection;
-import java.util.Objects;
 
 
 @Entity
 public class Movie {
+
+    public Collection<Review> getReviews() {
+        return reviews;
+    }
 
     @OneToMany (mappedBy = "movie")
     public Collection<Review> reviews;

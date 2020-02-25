@@ -14,18 +14,10 @@
         <img src="../img/header.png" alt="header" class="header-image">
         <nav>
             <ul>
-                <a href="../categories">
-                    <li>Home</li>
-                </a>
-                <a href="../reviews.html">
-                    <li>All Reviews</li>
-                </a>
-                <a href="../hashtags.html">
-                    <li>All Hashtags</li>
-                </a>
-                <a href="../create.html">
-                    <li>Create Review</li>
-                </a>
+                <a href="categories"> <li>Home</li></a>
+                <a href="/reviews"><li>All Reviews</li></a>
+                <a href="/hashtags"><li>All Hashtags</li></a>
+
             </ul>
         </nav>
         <h1 th:text="${categories.genre}" class="header-title"> Comedy</h1>
@@ -35,11 +27,21 @@
 
     <section class="all-boxes">
         <article th:each="movie:${categories.movies}"   >
-            <a th:href="@{'/movies/'+ ${movie.id}}" >
+            <a th:href="@{'/movies/'+ ${movie.title}}" >
             <h2 class="category-title" th:text="${movie.title}"> </h2>
             </a>
         </article>
 
+        <article>
+            <form class="add-movie" action="add-movie" method="POST">
+                <h2>Add Movie </h2>
+                <input name="movieName" type="text"> Name
+                <input name="Genre" type="text"> Genre
+                <input name="imgUrl" type="text"> Img Url <br>
+                <button type="submit">Make A New Movie</button>
+
+            </form>
+        </article>
 
     </section>
 </body>

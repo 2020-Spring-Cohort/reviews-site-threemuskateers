@@ -1,9 +1,13 @@
 package org.wecancodeit.reviews;
 
 import org.junit.jupiter.api.Test;
+import org.wecancodeit.reviews.models.Category;
+import org.wecancodeit.reviews.models.Movie;
+import org.wecancodeit.reviews.models.Review;
+import org.wecancodeit.reviews.storage.repositories.ReviewRepository;
+import org.wecancodeit.reviews.storage.ReviewStorageJpaImpl;
 
 import java.util.Collections;
-import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
@@ -23,7 +27,7 @@ public class ReviewStorageJpaImplTest {
             testRepo = new ReviewStorageJpaImpl(underTest);
             testCategory = new Category("Comedy", "comedyPic");
             testMovie = new Movie("Out Cold", testCategory);
-            testReview = new Review(testMovie, "Nadir");
+            testReview = new Review(testMovie, "Nadir", 4, "funny");
 
 
             when(testRepo.findAllReviews()).thenReturn(Collections.singletonList(testReview));
@@ -39,7 +43,7 @@ public class ReviewStorageJpaImplTest {
         testRepo = new ReviewStorageJpaImpl(underTest);
         testCategory = new Category("Comedy", "comedyPic");
         testMovie = new Movie("Out Cold", testCategory);
-        testReview = new Review(testMovie, "Nadir");
+        testReview = new Review(testMovie, "Nadir", 5, "commenttt");
 
         testRepo.store(testReview);
         when(testRepo.findAllReviewsByMovie(testMovie)).thenReturn(Collections.singletonList(testReview));

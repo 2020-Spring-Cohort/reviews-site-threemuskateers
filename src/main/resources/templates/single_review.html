@@ -1,52 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang= "en" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml" >
 <head>
-    <meta name=-"viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
-    <title> Review For: Out Cold</title>
-    <link rel="stylesheet" href="../static/css/style.css">
-    <link rel="stylesheet" href="../static/css/layout.css">
-</head>
+    <head>
+        <meta name=-"viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
+        <title th:text="'reviews for '+ ${review.author}" >
+        </title>
+        <link rel="stylesheet" href="../../css/style.css">
+        <link rel="stylesheet" href="../../css/layout.css">
+    </head>
 
 <body>
     <header>
-        <img src="../static/img/header.png" alt="header" class="header-image">
+        <img src="../../img/header.png" alt="header" class="header-image">
         <nav>
             <ul>
-                <a href="../static/index.html">
-                    <li>Home</li>
-                </a>
-                <a href="reviews.html">
-                    <li>All Reviews</li>
-                </a>
-                <a href="../static/hashtags.html">
-                    <li>All Hashtags</li>
-                </a>
-                <a href="create.html">
-                    <li>Create Review</li>
-                </a>
+                <a href="categories"> <li>Home</li></a>
+                <a href="/reviews"><li>All Reviews</li></a>
+                <a href="/hashtags"><li>All Hashtags</li></a>
+
             </ul>
         </nav>
-        <h1 class="header-title"> Review for: Out Cold</h1>
+        <h1 th:text="'Review for: ' +  ${review.getMovieTitleFromReview()}"class="header-title">  </h1>
     </header>
 
     <div class="movie-review-title">
-        <h2>Out Cold</h2>
-        <h2>A Decent Movie, but Terrible Movie and Morals</h2>
+        <h2 th:text="   ${review.getMovieTitleFromReview()}"> </h2>
+        <h2 th:text="'Review By: ' + ${review.getAuthor()}"></h2>
     </div>
 
     <section class="review-detail">
         <div class="review-detail1">
 
 
-            <h3> Tammy Raddbody</h3>
-            <h4>9:35pm on January 1, 2019</h4>
-            <p>
-                "This movie was an absolute disgrace. I showed it to
-                my children and have never regretted anything more.
-                The obscenities
-                used in this movie were horrific. I will never again
-                let my family watch this movie in my Christian home."
+            <h3 th:text="${review.getAuthor()}"> </h3>
+            <h4><!-- Date goes here --></h4>
+            <p th:text="${review.getComments()}">
+
             </p>
             <div class="hashtags hashtag-index">
                 <p> #funny </p>
@@ -59,13 +49,13 @@
 
         <div class="review-detail2">
 
-            <img src="../static/img/documentary.png" class="review-detail-picture" alt="movie picture">
+            <img src="../../img/documentary.png" class="review-detail-picture" alt="movie picture">
             <h3> Out Cold </h3>
             <div class="movie-num-stars">
                 Actual Stars Here
             </div>
-            <div class="movie-review-info">
-                4.5 out of 5 Stars
+            <div th:text="${review.getRating()} + ' out of 5 stars'" class="movie-review-info">
+
             </div>
         </div>
 
