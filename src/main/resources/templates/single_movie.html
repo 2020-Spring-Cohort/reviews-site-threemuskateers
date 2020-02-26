@@ -59,7 +59,7 @@
             </div>
         </div>
 
-            <form class= "single-review" method="POST" action="add-review">
+            <form class= "single-review" method="POST" th:action="'/movies/' + ${movie.title} + '/add-review'">
 
             <div class="review-title">
                 <a>

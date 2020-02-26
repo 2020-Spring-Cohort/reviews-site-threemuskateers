@@ -17,11 +17,9 @@ public class MovieController {
     private MovieStorage movieStorage;
     private ReviewStorage reviewStorage;
 
-
     public MovieController(MovieStorage movieStorage, ReviewStorage reviewStorage) {
         this.movieStorage = movieStorage;
         this.reviewStorage = reviewStorage;
-
     }
 
     @RequestMapping("/movies/{title}")
@@ -31,12 +29,12 @@ public class MovieController {
         return "single_movie";
     }
 
-    @PostMapping("/add-review")
-    public String addReview(@RequestParam String reviewTitle, int rating, String author, String summary, Model model) {
+    @PostMapping("/movies/{title}/add-review")
+    public String addReview(@RequestParam String reviewTitle, int rating, String author, String summary, Model model, @PathVariable String title) {
         Movie movieFromReviewTitle = movieStorage.findMovieByTitle(reviewTitle);
         Review reviewToStore = new Review(movieFromReviewTitle, author, rating, summary);
         reviewStorage.store(reviewToStore);
-//        model.addAttribute("reviewTitle", reviewTitle);
-        return "redirect:movies/" + reviewTitle;
+//        model.addAttribute("title", reviewToStore);
+        return "redirect:/movies/"+reviewTitle;
     }
 }
