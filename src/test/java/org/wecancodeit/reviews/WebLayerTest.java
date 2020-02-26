@@ -33,7 +33,7 @@ public class WebLayerTest {
     ReviewStorage reviewStorage;
 
     @Test
-    public void cateogiresshouldBeOkAndReturnTheCategoriesViewWithAllAppropriateGenres() throws Exception {
+    public void categoriesShouldBeOkAndReturnTheCategoriesViewWithAllAppropriateGenres() throws Exception {
         mockMvc.perform(get("/categories"))
                 .andDo(print())
                 .andExpect(status().isOk())

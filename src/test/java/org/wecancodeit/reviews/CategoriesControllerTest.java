@@ -7,10 +7,13 @@ import org.junit.jupiter.api.Test;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.wecancodeit.reviews.models.Category;
+import org.wecancodeit.reviews.models.Movie;
 import org.wecancodeit.reviews.storage.CategoryStorage;
+import org.wecancodeit.reviews.storage.MovieStorage;
 
 import java.util.Collections;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -21,6 +24,8 @@ public class CategoriesControllerTest {
 
     private CategoriesController underTest;
     private CategoryStorage mockStorage;
+    private MovieStorage movieStorage;
+    private Category testCategory;
 
     private MockMvc mockMvc;
     private Model mockModel;
@@ -28,9 +33,11 @@ public class CategoriesControllerTest {
     @BeforeEach
     public void setUp() {
         mockModel = mock(Model.class);
+        movieStorage = mock(MovieStorage.class);
         mockStorage = mock(CategoryStorage.class);
-        underTest = new CategoriesController(mockStorage);
+        underTest = new CategoriesController(mockStorage, movieStorage);
         mockMvc = MockMvcBuilders.standaloneSetup(underTest).build();
+        testCategory = new Category("Comedy", "testUrl");
     }
 
     @Test
@@ -50,13 +57,11 @@ public class CategoriesControllerTest {
         verify(mockModel).addAttribute("categories", testCategory);
     }
 
+    @Test
+    public void addReviewShouldRedirectToCategoriesGenreEndpoint(){
+        String result = underTest.addMovie("Out Cold", "Comedy", mockModel);
+        when(mockStorage.findCategoryByGenre("Comedy")).thenReturn(testCategory);
 
-//    @Test
-//    public void shouldGoToIndividualEndpoint() throws Exception{
-//        Category testCategory = new Category("testgenre", "testurl");
-//        when(mockStorage.findCategoryByGenre("testgenre")).thenReturn(testCategory);
-//        mockMvc.perform(get("/catgories/testgenre"))
-//                .andExpect(status().isOk())
-//                .andExpect(view().name
-//    }
+        assertThat(result).isEqualTo("redirect:categories/Comedy");
+    }
 }
