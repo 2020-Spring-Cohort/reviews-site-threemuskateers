@@ -1,9 +1,9 @@
 package org.wecancodeit.reviews.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Review {
@@ -41,11 +41,19 @@ public class Review {
     @GeneratedValue
     private Long reviewId;
 
+    public Collection<Hashtag> getHashtags() {
+        return hashtags;
+    }
+
+    @ManyToMany
+    private Set<Hashtag> hashtags;
+
     public Review(Movie movie, String author, int rating, String comments) {
         this.author = author;
         this.movie = movie;
         this.rating = rating;
         this.comments = comments;
+        this.hashtags = new HashSet<>();
     }
 
     @Override
@@ -73,4 +81,9 @@ public class Review {
     public int getRating() {
         return rating;
     }
+
+    public void addHashtag(Hashtag hashTagToAdd){
+        hashtags.add(hashTagToAdd);
+    }
+
 }

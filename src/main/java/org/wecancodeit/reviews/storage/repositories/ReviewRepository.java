@@ -11,4 +11,5 @@ public interface ReviewRepository extends CrudRepository<Review, Long> {
 Collection<Review> findAllByMovie(Movie movie);
 
 
+    Review findReviewByReviewId(Long reviewId);
 }

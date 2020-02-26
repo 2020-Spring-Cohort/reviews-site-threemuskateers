@@ -39,10 +39,11 @@
 
             </p>
             <div class="hashtags hashtag-index">
-                <p> #funny </p>
-                <p> #hilarious </p>
-                <p> #cold </p>
-                <p> #winter</p>
+                <p th:each="hashtag : ${review.getHashtags()}" th:text="${hashtag.hashtag}"></p>
+                <form method = "POST" th:action = "'/reviews/'+ ${reviewId} + '/add-hashtag'" >
+                <input type="text" name="hashTag">
+                <button type="submit">Add Hashtag</button>
+            </form>
             </div>
 
         </div>

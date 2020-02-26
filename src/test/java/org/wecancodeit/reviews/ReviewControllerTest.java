@@ -10,6 +10,7 @@ import org.wecancodeit.reviews.controllers.ReviewController;
 import org.wecancodeit.reviews.models.Category;
 import org.wecancodeit.reviews.models.Movie;
 import org.wecancodeit.reviews.models.Review;
+import org.wecancodeit.reviews.storage.repositories.HashtagRepository;
 import org.wecancodeit.reviews.storage.repositories.ReviewRepository;
 
 import java.util.Optional;
@@ -28,12 +29,14 @@ public class ReviewControllerTest {
     private ReviewRepository mockStorage;
     private Movie testMovie;
     private Review reviewUndertest;
+    private HashtagRepository hashTagRepo;
 
     @BeforeEach
     public void setUp() {
         mockModel = mock(Model.class);
         mockStorage = mock(ReviewRepository.class);
-        underTest = new ReviewController(mockStorage);
+
+        underTest = new ReviewController(mockStorage, hashTagRepo);
         mockMvc = MockMvcBuilders.standaloneSetup(underTest).build();
         Category fakeCategory = new Category("Fake Category", "image");
         testMovie = new Movie("Out Cold", fakeCategory);
