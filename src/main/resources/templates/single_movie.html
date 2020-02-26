@@ -27,13 +27,13 @@
 
         <div class="single-review list-title">
             <div class="review-title">
-                <h2>Review Author</h2>
+                <h2>Movie Title</h2>
             </div>
             <div class="review-num-stars">
                 <h2>Movie Rating</h2>
             </div>
             <div class="review-date-time">
-                <h2>Date Reviewed</h2>
+                <h2>Review Author</h2>
             </div>
             <div class="review-summary">
                 <h2>Review Description</h2>
@@ -44,20 +44,41 @@
         <div th:each="review:${movie.reviews}" class="single-review">
             <div class="review-title">
                 <a th:href="@{'/reviews/'+ ${review.reviewId}}">
-                <p th:text="${review.author}"></p>
+                <p th:text="${review.getMovieTitleFromReview()}"></p>
                 </a>
             </div>
             <div class="review-num-stars">
                 <p th:text="${review.getRating()} + ' out of 5'"> </p>
             </div>
             <div class="review-date-time">
-                <p> February 3, 2020</p>
+                <p th:text="${review.author}"></p>
             </div>
             <div class="review-description-summary">
                 <p th:text="${review.getComments()}">
                 </p>
             </div>
         </div>
+
+            <form class= "single-review" method="post" action="add-review">
+
+            <div class="review-title">
+                <a>
+                    <p th:text="${review.getMovieTitleFromReview()}"><input name="reviewTitle" type="hidden"></p>
+                </a>
+            </div>
+            <div class="review-num-stars">
+                <p><input name="rating" type="text"></p>
+            </div>
+            <div class="review-date-time">
+                <p><input name="author" type="text"></p>
+            </div>
+            <div class="review-description-summary">
+                <p><input name="summary" type="text"></p>
+                <button type="submit">Make A New Review</button>
+            </div>
+            </form>
+
+
     </section>
 </body>
 

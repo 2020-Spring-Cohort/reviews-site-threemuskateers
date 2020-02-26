@@ -58,10 +58,17 @@ public class CategoriesControllerTest {
     }
 
     @Test
-    public void addReviewShouldRedirectToCategoriesGenreEndpoint(){
+    public void addMovieShouldRedirectToCategoriesGenreEndpoint(){
         String result = underTest.addMovie("Out Cold", "Comedy", mockModel);
         when(mockStorage.findCategoryByGenre("Comedy")).thenReturn(testCategory);
 
         assertThat(result).isEqualTo("redirect:categories/Comedy");
+    }
+
+    @Test
+    public void addMovieShouldStoreMovie(){
+        underTest.addMovie("Out Cold", "Comedy", mockModel);
+        Movie movieToStore = new Movie("Out Cold", testCategory);
+        verify(movieStorage).store(movieToStore);
     }
 }
