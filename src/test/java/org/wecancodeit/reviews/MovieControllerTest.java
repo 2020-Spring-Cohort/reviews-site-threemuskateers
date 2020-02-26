@@ -9,6 +9,7 @@ import org.wecancodeit.reviews.controllers.MovieController;
 import org.wecancodeit.reviews.models.Category;
 import org.wecancodeit.reviews.models.Movie;
 import org.wecancodeit.reviews.storage.MovieStorage;
+import org.wecancodeit.reviews.storage.ReviewStorage;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
@@ -20,6 +21,7 @@ public class MovieControllerTest {
     private MovieStorage movieStorage;
     private Movie testMovie;
     private Category testCategory;
+    private ReviewStorage reviewStorage;
 
 
     @Test
@@ -28,7 +30,7 @@ public class MovieControllerTest {
         testMovie = new Movie("Out Cold", testCategory);
         movieStorage = mock(MovieStorage.class);
         model = mock(Model.class);
-        underTest = new MovieController(movieStorage);
+        underTest = new MovieController(movieStorage, reviewStorage);
 
         String result = underTest.displayMovie("Out Cold", model);
         when(movieStorage.findMovieById(1L)).thenReturn(testMovie);
@@ -42,7 +44,7 @@ public class MovieControllerTest {
         testMovie = new Movie("Out Cold", testCategory);
         movieStorage = mock(MovieStorage.class);
         model = mock(Model.class);
-        underTest = new MovieController(movieStorage);
+        underTest = new MovieController(movieStorage, reviewStorage);
 
         when(movieStorage.findMovieByTitle("Out Cold")).thenReturn(testMovie);
         underTest.displayMovie("Out Cold", model);
@@ -58,7 +60,7 @@ public class MovieControllerTest {
         testMovie = new Movie("Out Cold", testCategory);
         movieStorage = mock(MovieStorage.class);
         model = mock(Model.class);
-        underTest = new MovieController(movieStorage);
+        underTest = new MovieController(movieStorage, reviewStorage);
 
         when(movieStorage.findMovieByTitle("Out Cold")).thenReturn(testMovie);
         MockMvc mockMVC = MockMvcBuilders.standaloneSetup(underTest).build();

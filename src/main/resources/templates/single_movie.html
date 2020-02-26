@@ -59,11 +59,11 @@
             </div>
         </div>
 
-            <form class= "single-review" method="post" action="add-review">
+            <form class= "single-review" method="POST" action="add-review">
 
             <div class="review-title">
                 <a>
-                    <p th:text="${review.getMovieTitleFromReview()}"><input name="reviewTitle" type="hidden"></p>
+                    <p><input name="reviewTitle" th:value="${movie.title}"></p>
                 </a>
             </div>
             <div class="review-num-stars">
@@ -73,8 +73,9 @@
                 <p><input name="author" type="text"></p>
             </div>
             <div class="review-description-summary">
-                <p><input name="summary" type="text"></p>
+                <p><input name="summary" type="text">
                 <button type="submit">Make A New Review</button>
+                </p>
             </div>
             </form>
 
