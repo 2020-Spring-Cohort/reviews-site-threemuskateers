@@ -36,8 +36,8 @@
             <form class="add-movie" action="/add-movie" method="POST">
                 <h2>Add Movie </h2>
                 <input name="movieName" type="text"> Name
-                <input name="genre" type="text"> Genre
-                <input name="imgUrl" type="text"> Img Url <br>
+                <input name="genre" th:value="${categories.genre}">
+                <input name="imgUrl" type="hidden" value="some-value"> <br>
                 <button type="submit">Make A New Movie</button>
 
             </form>

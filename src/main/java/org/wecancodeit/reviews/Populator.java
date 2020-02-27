@@ -41,32 +41,106 @@ public class Populator implements CommandLineRunner {
         Category other = new Category("Other", "other");
         categoryStorage.store(other);
 
-        Movie irishmen = new Movie ("The Irishmen", drama);
+        Movie irishmen = new Movie ("The Irishman", drama);
         movieStorage.store(irishmen);
+
+        Movie movie2 = new Movie ("A Marriage Story", drama);
+        movieStorage.store(movie2);
+
+        Movie movie3 = new Movie ("Uncut Gems", drama);
+        movieStorage.store(movie3);
+
         Movie outCold = new Movie ("Out Cold", comedy);
         movieStorage.store(outCold);
 
-        Review irishmenReview1 = new Review (irishmen, "Al", 3, "it was long");
+        Movie movie4 = new Movie ("Hot Rod", comedy);
+        movieStorage.store(movie4);
+
+        Movie movie5 = new Movie ("Jojo Rabbit", comedy);
+        movieStorage.store(movie5);
+
+        Movie movie6 = new Movie ("Bourne Identity", actionadventure);
+        movieStorage.store(movie6);
+        Movie movie7 = new Movie ("Sonic The Hedgehog", actionadventure);
+        movieStorage.store(movie7);
+        Movie movie8 = new Movie ("Mission Impossible", actionadventure);
+        movieStorage.store(movie8);
+
+        Movie movie9 = new Movie ("Saw", thriller);
+        movieStorage.store(movie9);
+        Movie movie10 = new Movie ("The Babadook", thriller);
+        movieStorage.store(movie10);
+        Movie movie11 = new Movie ("Hereditary", thriller);
+        movieStorage.store(movie11);
+
+        Movie movie12 = new Movie ("Blackfish", documentary);
+        movieStorage.store(movie12);
+        Movie movie13 = new Movie ("Jiro Dreams Of Sushi", documentary);
+        movieStorage.store(movie13);
+        Movie movie14 = new Movie ("Fyre", documentary);
+        movieStorage.store(movie14);
+
+
+        Movie movie15 = new Movie ("A Star Is Born", other);
+        movieStorage.store(movie15);
+        Movie movie16 = new Movie ("The Room", other);
+        movieStorage.store(movie16);
+        Movie movie17 = new Movie ("Face Off", other);
+        movieStorage.store(movie17);
+
+
+
+
+
+        Review irishmenReview1 = new Review (irishmen, "Al", 4,
+                "Sed ut perspiciatis unde omnis iste natus error sit " +
+                        "voluptatem accusantium doloremque laudantium, totam rem " +
+                        "aperiam, eaque ipsa quae ab illo inventore veritatis et quasi " +
+                        "m eum fugiat quo voluptas nulla pariatur?");
         reviewStorage.store(irishmenReview1);
+
+        Hashtag hashtag2 = new Hashtag("boss");
+        hashRepo.save(hashtag2);
+        irishmenReview1.addHashtag(hashtag2);
+//        reviewStorage.store(irishmenReview1);
+
+        Hashtag hashtag3 = new Hashtag("boring");
+        hashRepo.save(hashtag3);
+        irishmenReview1.addHashtag(hashtag3);
+//        reviewStorage.store(irishmenReview1);
+
+        Hashtag hashtag7 = new Hashtag("oscars");
+        hashRepo.save(hashtag7);
+        irishmenReview1.addHashtag(hashtag7);
+        reviewStorage.store(irishmenReview1);
+
+
+        Review irishmenReview2 = new Review (irishmen, "Nadir", 3,
+                "Nadir liked the movie even though he didn't see it either.  He actually" +
+                        "thought it was called the Irishmen which basically explains alot.");
+        reviewStorage.store(irishmenReview2);
+
+        Review irishmenReview3 = new Review (irishmen, "Olivia", 3,
+                "Even though I didn't see it.  I think it was probably a really good movie.");
+        reviewStorage.store(irishmenReview3);
+
+
 
         Review outColdReview1 = new Review (outCold, "Nadir", 3, "it was fine");
         reviewStorage.store(outColdReview1);
 
-        Hashtag hashtag1 = new Hashtag("funny");
-        Hashtag hashtag2 = new Hashtag("boss");
-        Hashtag hashtag3 = new Hashtag("hilarious");
-        Hashtag hashtag4 = new Hashtag("scary");
-        Hashtag hashtag5 = new Hashtag("not cool");
-        Hashtag hashtag6 = new Hashtag("amazing");
-        Hashtag hashtag7 = new Hashtag("oscars");
+        Review marriageStory1 = new Review (movie2, "Olivia",1,"I am not a " +
+                "fan of some of the actors/actresses involved in this film.  I also did" +
+                "not see it.  I also assume it was bad because it is about marriage.");
 
-        hashRepo.save(hashtag1);
-        hashRepo.save(hashtag2);
-        hashRepo.save(hashtag3);
-        hashRepo.save(hashtag4);
-        hashRepo.save(hashtag5);
-        hashRepo.save(hashtag6);
-        hashRepo.save(hashtag7);
+        reviewStorage.store(marriageStory1);
+
+        marriageStory1.addHashtag(hashtag7);
+//        reviewStorage.store(marriageStory1);
+
+
+        marriageStory1.addHashtag(hashtag3);
+        reviewStorage.store(marriageStory1);
 
     }
 }

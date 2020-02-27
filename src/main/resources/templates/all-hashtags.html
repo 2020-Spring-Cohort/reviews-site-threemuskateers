@@ -24,7 +24,7 @@
     </header>
 <div class="hashtag-index">
 
-    <a th:each="hashtag:${allHashtags}" th:href="${'/'}">
+    <a th:each="hashtag:${allHashtags}" th:href="@{'/hashtags/'+ ${hashtag.hashtag}}">
     <p th:text="${hashtag.getHashtag()}"></p>
     </a>
 

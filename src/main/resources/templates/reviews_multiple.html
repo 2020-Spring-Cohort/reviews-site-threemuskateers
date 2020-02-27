@@ -40,17 +40,23 @@
 
         <div th:each="review:${reviews}"   class="single-review">
             <div class="review-title">
+                <a th:href="@{'/reviews/' + ${review.reviewId}}">
                 <p th:text="${review.getMovieTitleFromReview()}"></p>
+                </a>
             </div>
             <div class="review-num-stars">
+                <a th:href="@{'/reviews/' + ${review.reviewId}}">
                 <p th:text="${review.getRating()} + ' out of 5'" > </p>
+                </a>
             </div>
             <div class="review-date-time">
                 <p th:text="${review.getAuthor()}"> </p>
             </div>
             <div class="review-summary">
+                <a th:href="@{'/reviews/' + ${review.reviewId}}">
                 <p th:text="${review.getComments()}">
                 </p>
+                </a>
             </div>
         </div>
 

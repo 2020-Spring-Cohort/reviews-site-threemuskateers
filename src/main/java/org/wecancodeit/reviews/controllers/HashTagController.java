@@ -34,8 +34,8 @@ public class HashTagController {
     @RequestMapping({"/hashtags/{hashtagName}"})
     public String showAllReviewsForHashtag(@PathVariable String hashtagName, Model model){
         Hashtag hashtagToDisplay = hashtagRepository.findHashtagByHashtag(hashtagName).get();
-        Collection<Review> reviewsFromHash = reviewRepository.findAllByHashtags(hashtagName);
-        model.addAttribute("reviewsFromHash", reviewsFromHash);
+//        Collection<Review> reviewsFromHash = reviewRepository.findAllByHashtags(hashtagName);
+        model.addAttribute("singleHashtag", hashtagToDisplay);
         return "reviews_hashtag";
     }
 }

@@ -11,24 +11,16 @@
 
 <body>
     <header>
-        <img src="img/header.png" alt="header" class="header-image">
+        <img src="../img/header.png" alt="header" class="header-image">
         <nav>
             <ul>
-                <a href="index.html">
-                    <li>Home</li>
-                </a>
-                <a href="reviews.html">
-                    <li>All Reviews</li>
-                </a>
-                <a href="hashtags.html">
-                    <li>All Hashtags</li>
-                </a>
-                <a href="create.html">
-                    <li>Create Review</li>
-                </a>
+                <a href="/"> <li>Home</li></a>
+                <a href="/reviews"><li>All Reviews</li></a>
+                <a href="/hashtags"><li>All Hashtags</li></a>
+
             </ul>
         </nav>
-        <h1 class="header-title" th:text="'All Reviews With ' + ${hashtagName}">  </h1>
+        <h1 class="header-title" th:text="'All Reviews With #' + ${hashtagName}">  </h1>
     </header>
     <section class="listed-reviews">
 
@@ -40,27 +32,27 @@
                 <h2>Movie Rating</h2>
             </div>
             <div class="review-date-time">
-                <h2>Date Reviewed</h2>
+                <h2>Review Author</h2>
             </div>
             <div class="review-summary">
                 <h2>Review Description</h2>
             </div>
         </div>
 
-        <div th:each="reviewDetail:${reviewsFromHash.}"  class="single-review">
+        <div th:each="review:${singleHashtag.getReviews()}"  class="single-review">
             <div class="review-title">
-                <p th:text="reviewDetail.getMovieTitleFromReview()"></p>
+                <a th:href="@{'/movies/'+${review.getMovieTitleFromReview()}}">
+                <p th:text="${review.getMovieTitleFromReview()}"></p>
+                </a>
             </div>
             <div class="review-num-stars">
-                <p>4.5 Out Of 5 </p>
+                <p th:text="${review.getRating()} + ' out of 5'"></p>
             </div>
             <div class="review-date-time">
-                <p> February 3, 2020</p>
+                <p th:text="${review.author}"></p>
             </div>
             <div class="review-summary">
-                <p> initial impressions: Light weight, doesn't feel bulky or
-                    huge on the wrist. I can hardly notice it's there at times
-                    when I’m wearing it....
+                <p th:text="${review.getComments()}">
                 </p>
             </div>
         </div>

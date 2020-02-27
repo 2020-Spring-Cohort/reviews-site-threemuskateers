@@ -25,7 +25,12 @@
     </header>
 
     <div class="movie-review-title">
-        <h2 th:text="   ${review.getMovieTitleFromReview()}"> </h2>
+        <a th:href="@{'/movies/' + ${review.getMovieTitleFromReview()}}">
+        <h2 th:text="   ${review.getMovieTitleFromReview()}">
+
+        </h2>
+        </a>
+
         <h2 th:text="'Review By: ' + ${review.getAuthor()}"></h2>
     </div>
 
@@ -39,11 +44,14 @@
 
             </p>
             <div class="hashtags hashtag-index">
-                <p th:each="hashtag : ${review.getHashtags()}" th:text="${hashtag.hashtag}"></p>
                 <form method = "POST" th:action = "'/reviews/'+ ${reviewId} + '/add-hashtag'" >
                 <input type="text" name="hashTag">
                 <button type="submit">Add Hashtag</button>
             </form>
+                <a th:each="hashtag : ${review.getHashtags()}"  th:href="@{'/hashtags/' + ${hashtag.hashtag}}">
+                    <p th:text="${hashtag.hashtag}">
+                    </p>
+                </a>
             </div>
 
         </div>
@@ -51,9 +59,8 @@
         <div class="review-detail2">
 
             <img src="../../img/documentary.png" class="review-detail-picture" alt="movie picture">
-            <h3> Out Cold </h3>
+            <h3 th:text="${review.getMovieTitleFromReview()}"> </h3>
             <div class="movie-num-stars">
-                Actual Stars Here
             </div>
             <div th:text="${review.getRating()} + ' out of 5 stars'" class="movie-review-info">
 

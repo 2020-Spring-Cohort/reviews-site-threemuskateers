@@ -119,6 +119,12 @@ article {
     margin-left: 200px;
 }
 
+.movie-review-info{
+    font-size: 4em;
+    color: #f16320;
+    font-weight: 600;
+}
+
 .movie-review-title h2:first-child {
     font-size: 5em;
     display: inline;
